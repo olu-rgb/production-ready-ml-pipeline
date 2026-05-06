@@ -3,7 +3,7 @@ A robust machine learning workflow that emphasised engineering, modularity, and 
 
 ### General overview
 This project integrated a pipeline that combined high-dimensional genomic data with environmental timestamp data 
-to predict the yield of milo plants. The project used a Gaussian Process Regression (GPR) model as a proxy for GBLUP to capture a composite three-way kernel that combined genetic, environmental, and genotype by environmental interaction signals for yield prediction.
+to predict the yield of milo plants. The project used a Gaussian Process Regression (GPR) model to capture a composite three-way kernel that combined genetic, environmental, and interaction signals for yield prediction.
 
 
 **Set up and run instructions**
