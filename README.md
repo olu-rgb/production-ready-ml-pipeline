@@ -13,7 +13,6 @@ Project Structure
 ├── config.yaml                 # custom setup for pipeline configuration and specifications 
 ├── main.py                     # point of entry to pipeline
 ├── README.md                   # project overview, set up, and run instructions
-├── cloud_implementation.md     # how to improve pipeline into a cloud implementation
 ├── src/                        # source code dir
 ├── ├── eda.py                  # contains plotting logic for initial EDA and final model evaluation
 │   ├── processor.py            # handles quality checks, missing data, snps recoding, and so on
