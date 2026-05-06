@@ -161,9 +161,11 @@ def save_processed_files(df_snp, df_env, df_target, config_file, ROOT):
     """
 
     processed_path = config_file['inputs']['processed_data_dir']
-    df_snp = df_snp.sort('sample_id')
-    df_env = df_env.sort('sample_id')
-    df_target = df_target.sort('sample_id')
+    idx_col = config_file['data_specs']['index']
+    
+    df_snp = df_snp.sort(idx_col)
+    df_env = df_env.sort(idx_col)
+    df_target = df_target.sort(idx_col)
 
     assert df_snp.shape[0] == df_env.shape[0] == df_target.shape[0]
 
