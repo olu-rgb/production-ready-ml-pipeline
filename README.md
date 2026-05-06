@@ -1,5 +1,5 @@
 # production-ready-ml-pipeline
-A robust machine learning workflow that emphasised engineering and reusability.
+A robust machine learning workflow that emphasised engineering, modularity, and reusability.
 
 ### General overview
 This project integrated a pipeline that combined high-dimensional genomic data with environmental timestamp data 
