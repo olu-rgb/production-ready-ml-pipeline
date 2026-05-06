@@ -1,0 +1,71 @@
+inputs:
+  raw_data_path: 'data/raw/yield_raw_genotypes.csv'
+  processed_data_dir: 'data/processed/'
+
+outputs:
+  train_file: 'train_split.parquet'
+  test_file: 'test_split.parquet'
+  processed_snp: 'snp_data.parquet'
+  snp_metadata: 'snp_metadata.json'
+  processed_env: 'environment_data.parquet'
+  processed_target: 'target_data.parquet'
+  model_dir: 'outputs/models/'
+  model_name_pattern: 'gpr_model_*.pkl'
+  metrics_dir: 'outputs/metrics/'
+  plots_dir: 'outputs/plots/'
+
+data_specs:
+  target: 'yield'
+  index: 'sample_id'
+  target_bounds: [0, 50] # drop out sure fails
+  nzv_threshold: 0.001
+  max_miss: 0.2
+  snp_prefix: 'snp_'
+  env_variables:
+    - 'temp'
+    - 'humidity'
+    - 'co2_ppm'
+    - 'light_hours'
+    - 'soil_ec'
+    - 'irrigation_ml'
+  engineered_variables:
+    - 'irr_temp_ratio'
+    - 'vpd'
+    - 'co2_light'
+  env_to_drop:
+    - 'humidity_mean'
+    - 'humidity_std'
+  stats_to_keep:
+    - 'id'
+    - 'mean'
+    - 'std'
+  time_points: 5
+
+plotting:
+  cols: 3
+
+execution_flags:
+  run_eda: True
+  save_plot: True
+
+training_params:
+  test_split_ratio: 0.2
+  cv_folds: 5
+  random_seed: 785
+  gpr_alpha: 0.1 # 10% noise
+
+snp_preprocesing:
+  snp_impute: 'mode'
+#  maf_threshold: 0.05 99% has lower than this
+#  max_missing: 0.1 handled in max_miss
+
+# stakeholders can help with bounds
+env_preprocessing:
+  impute_strategy: 'median'
+  env_bounds:
+    temp: [5, 50] # most plants would be damaged outside the bounds
+    light_hours: [0, 24] # only 24hrs/day
+    humidity: [0, 100] # relative humidity (unit: percentage)
+#    co2_ppm: []
+    irrigation_ml: [0, 1000] # no negative irrigation, plant most likely submerged in water above 1000?
+
