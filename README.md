@@ -33,7 +33,7 @@ Project Structure
 1. Clone Repository
 ```bash
 git clone https://github.com/olu-rgb/production-ready-ml-pipeline.git
-cd cucumber_repo
+cd production-ready-ml-pipeline
 ```
 2. Set up a virtual environment to manage dependencies
 ```bash
